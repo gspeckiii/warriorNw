@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using warriorNw.Core.Models;
+using warriorNw.Core.ViewModels;
 using warriorNw.DataAccess.InMemory;
 
 namespace warriorNw.WebUI.Controllers
@@ -12,9 +13,11 @@ namespace warriorNw.WebUI.Controllers
     public class ProductManagerController : Controller
     {
         ProductRepository context;
+        ProductCategoryRepository productCategories;
         public ProductManagerController()
         {
             context = new ProductRepository();
+            productCategories = new ProductCategoryRepository();
         }
 
         // GET: ProductManager
@@ -26,8 +29,11 @@ namespace warriorNw.WebUI.Controllers
         }
         public ActionResult Create()
         {
-            Product product = new Product();
-            return View(product);
+            ProductManagerViewModel viewModel = new ProductManagerViewModel();
+
+            viewModel.Product = new Product();
+            viewModel.ProductCategories = productCategories.Collection();
+            return View(viewModel);
 
         }
 
@@ -54,7 +60,11 @@ namespace warriorNw.WebUI.Controllers
             }
             else
             {
-                return View(product);
+                ProductManagerViewModel viewModel = new ProductManagerViewModel();
+                viewModel.Product = product;
+                viewModel.ProductCategories = productCategories.Collection();
+
+                return View(viewModel);
             }
         }
         [HttpPost]
@@ -71,7 +81,7 @@ namespace warriorNw.WebUI.Controllers
                 {
                     return View(product);
                 }
-                productToEdit.Catagory = product.Catagory;
+                productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
                 productToEdit.Image = product.Image;
                 productToEdit.Name = product.Name;

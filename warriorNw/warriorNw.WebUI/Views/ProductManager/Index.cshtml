@@ -21,7 +21,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Catagory)
+            @Html.DisplayNameFor(model => model.Category)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Image)
@@ -41,13 +41,13 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Catagory)
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Image)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
            |
             @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>

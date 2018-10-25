@@ -17,7 +17,7 @@ namespace warriorNw.Core.Models
         public string Description { get; set; }
         [Range(9,1000)]
         public decimal Price { get; set; }
-        public string Catagory { get; set; }
+        public string Category { get; set; }
         public string Image { get; set; }
 
         public Product()
