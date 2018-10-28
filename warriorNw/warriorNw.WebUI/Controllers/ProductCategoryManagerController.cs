@@ -11,10 +11,10 @@ namespace warriorNw.WebUI.Controllers
     public class ProductCategoryManagerController : Controller
     {
         // GET: ProductCatagory
-        ProductCategoryRepository context;
+        InMemoryRepository<ProductCategory> context;
         public ProductCategoryManagerController()
         {
-            context = new ProductCategoryRepository();
+            context = new InMemoryRepository<ProductCategory>();
         }
 
         // GET: ProductManager
