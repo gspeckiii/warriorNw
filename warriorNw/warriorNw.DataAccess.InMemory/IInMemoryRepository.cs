@@ -4,11 +4,12 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
+using warriorNw.Core.Contacts;
 using warriorNw.Core.Models;
 
 namespace warriorNw.DataAccess.InMemory
 {
-    public class InMemoryRepository<T> where T:BaseEntity
+    public class InMemoryRepository<T> : IRepository<T> where T:BaseEntity
     {
         ObjectCache cache = MemoryCache.Default;
         List<T> items;
@@ -23,10 +24,11 @@ namespace warriorNw.DataAccess.InMemory
                 items = new List<T>();
             }
         }
-        public void Commit()
+       public void Commit()
         {
             cache[className] = items;
         }
+        
         public void Insert(T t)
         {
             items.Add(t);
